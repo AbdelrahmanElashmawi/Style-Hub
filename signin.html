@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="shortcut icon" href="materal/abdelr7man-removebg-preview.png">
+    <title>SIGN IN - Style Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* الهيدر */
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            padding: 0 25px;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .icons-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icons-header a {
+            position: relative;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .icons-header a:hover {
+            color: #ff6b6b;
+        }
+
+        /* عدادات الكارت */
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* قسم تسجيل الدخول */
+        .signup {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            margin-top: 20px;
+        }
+
+        .signup-form {
+            width: 100%;
+            max-width: 450px;
+            padding: 35px 30px;
+            background: #2a2a2a;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+
+        .signup-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .signup-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            border-radius: 3px;
+        }
+
+        .signup-input {
+            width: 100%;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .signup-input::placeholder {
+            color: #aaa;
+        }
+
+        .signup-input:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.1);
+            outline: none;
+        }
+
+        .signup-input.valid {
+            border-color: #4cd964;
+        }
+
+        .signup-input.invalid {
+            border-color: #ff4757;
+        }
+
+        .input-error {
+            color: #ff4757;
+            font-size: 0.85rem;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            padding-left: 5px;
+            display: none;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .remember-me label {
+            color: #aaa;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #ff6b6b;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #ff4757;
+            text-decoration: underline;
+        }
+
+        .btn-signup {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-signup:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(45deg, #ff4757, #ff6b6b);
+        }
+
+        .btn-signup:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        .form-footer a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .form-footer a:hover {
+            color: #ff4757;
+            text-decoration: underline;
+        }
+
+        /* رسالة النجاح */
+        .success-message {
+            text-align: center;
+            padding: 15px;
+            background: rgba(76, 217, 100, 0.1);
+            border: 1px solid #4cd964;
+            border-radius: 12px;
+            margin: 20px 0;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* الفوتر */
+        footer {
+            background: #111;
+            padding: 60px 20px 30px;
+            margin-top: 50px;
+        }
+
+        .footer-cantainer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-cantainer h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-box {
+            text-align: center;
+        }
+
+        .footer-box h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .a-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .a-footer a {
+            font-size: 1.1rem;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        .a-footer a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-icons i {
+            font-size: 1.8rem;
+            color: #aaa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-icons i:hover {
+            color: #ff6b6b;
+            transform: translateY(-5px);
+        }
+
+        .footer-copy {
+            max-width: 1400px;
+            margin: 30px auto 0;
+            padding-top: 30px;
+            color: #aaa;
+            text-align: center;
+        }
+
+        .footer-copy p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .footer-copy p a {
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        .footer-copy p a:hover {
+            color: #fff;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .about {
+            color: #aaa;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .about:hover {
+            color: #ff6b6b;
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 20px;
+                height: 70px;
+            }
+            
+            .logo img {
+                width: 100px;
+            }
+            
+            .signup {
+                padding: 20px 15px;
+                margin-top: 10px;
+            }
+            
+            .signup-form {
+                padding: 25px 20px;
+                max-width: 100%;
+            }
+            
+            .signup-title {
+                font-size: 1.8rem;
+            }
+            
+            .signup-input {
+                padding: 16px;
+                font-size: 1rem;
+            }
+            
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .btn-signup {
+                padding: 18px;
+                font-size: 1.1rem;
+            }
+            
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signup-title {
+                font-size: 1.6rem;
+            }
+            
+            .signup-form {
+                padding: 20px 15px;
+            }
+            
+            .footer {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-cantainer h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .signup {
+                padding: 10px;
+                margin-top: 10px;
+            }
+            
+            .signup-form {
+                max-width: 90%;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <a href="home.html" class="logo"><img src="materal/logo.png" alt="Style Hub"></a>
+
+        <div class="icons-header">
+            <a href="cart.html" class="cart-link"><i class='bx bx-cart-alt'></i></a>
+        </div>
+    </header>
+
+    <!-- قسم تسجيل الدخول -->
+    <div class="signup">
+        <form action="signin.php" method="POST" class="signup-form" id="signinForm">
+            <h1 class="signup-title">Welcome Back</h1>
+            
+            <!-- رسالة النجاح -->
+            <div class="success-message" id="successMessage">
+                <i class='bx bx-check-circle' style="color: #4cd964; font-size: 2rem;"></i>
+                <p>Login successful! Redirecting...</p>
+            </div>
+            
+            <!-- البريد الإلكتروني -->
+            <div>
+                <input type="email" name="email" placeholder="Email Address" class="signup-input" id="email" required>
+                <div class="input-error" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <!-- كلمة المرور -->
+            <div>
+                <input type="password" name="password" placeholder="Password" class="signup-input" id="password" required>
+                <div class="input-error" id="passwordError">Password is required</div>
+            </div>
+            
+            <!-- تذكرني ونسيت كلمة المرور -->
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
+            </div>
+            
+            <!-- زر تسجيل الدخول -->
+            <button type="submit" class="btn-signup" id="signinButton" disabled>
+                <i class='bx bx-log-in'></i> Sign In
+            </button>
+            
+            <!-- رابط إنشاء حساب -->
+            <div class="form-footer">
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+    
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-cantainer">
+            <h1 id="contact">CONTACT US</h1>
+            <div class="footer">
+                <div class="footer-box">
+                    <h2>What's Hot</h2>
+                    <div class="a-footer">
+                        <a href="#">Discount Voucher</a>
+                        <a href="#">Spring Collection</a>
+                        <a href="#">Trending</a>
+                        <a href="#">River Island</a>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <h2>Brands</h2>
+                    <div class="a-footer">
+                        <a href="#">Jack&Jones</a>
+                        <a href="#">Calvin Klein</a>
+                        <a href="#">Ray Ban</a>
+                        <a href="#">Bestsellers</a>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <h2>Men Shop</h2>
+                    <div class="a-footer">
+                        <a href="#">Tops</a>
+                        <a href="#">Bottoms</a>
+                        <a href="#">Accessories</a>
+                        <a href="#">Shoes</a>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <h2>Women Shop</h2>
+                    <div class="a-footer">
+                        <a href="#">Jeans</a>
+                        <a href="#">Dresses</a>
+                        <a href="#">Other</a>
+                        <a href="#">Shoes</a>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <h2>Help</h2>
+                    <div class="a-footer">
+                        <a href="#">F.A.Q.</a>
+                        <a href="#">Shipping</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+
+                <div class="footer-box">
+                    <h2>Social</h2>
+                    <div class="footer-icons">
+                        <i class='bx bxl-facebook'></i>
+                        <i class='bx bxl-instagram'></i>
+                        <i class='bx bxl-twitter'></i>
+                        <i class='bx bxl-pinterest'></i>
+                        <i class='bx bxl-linkedin'></i>
+                        <i class='bx bxl-whatsapp'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            <p>© Copyright 2025 | Style Hub | All Rights Reserved</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy & Cookies</a>
+                <a href="#terms">Terms & Conditions</a>
+                <a href="#accessibility">Accessibility</a>
+                <a href="#directory">Store Directory</a>
+            </div>
+            <a href="#about-us" class="about">About Us</a>
+        </div>
+    </footer>
+
+    <script>
+        // ==============================================
+        // نظام تسجيل الدخول مع التحقق
+        // ==============================================
+        
+        // عناصر DOM
+        const form = document.getElementById('signinForm');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const rememberMe = document.getElementById('rememberMe');
+        const signinButton = document.getElementById('signinButton');
+        const successMessage = document.getElementById('successMessage');
+        
+        // عناصر الأخطاء
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        
+        // بيانات الكارت من localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // دالة لتحديث عداد الكارت
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            // تحديث العداد في الهيدر
+            const cartLink = document.querySelector('.cart-link');
+            if (cartLink) {
+                // إزالة العداد القديم إذا كان موجوداً
+                const oldCount = cartLink.querySelector('.cart-count');
+                if (oldCount) {
+                    oldCount.remove();
+                }
+                
+                // إضافة عداد جديد إذا كان هناك منتجات
+                if (cartCount > 0) {
+                    const countSpan = document.createElement('span');
+                    countSpan.className = 'cart-count';
+                    countSpan.textContent = cartCount;
+                    countSpan.style.cssText = `
+                        position: absolute;
+                        top: -8px;
+                        right: -8px;
+                        background: linear-gradient(45deg, #ff6b6b, #ff4757);
+                        color: white;
+                        font-size: 0.7rem;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                    `;
+                    cartLink.style.position = 'relative';
+                    cartLink.appendChild(countSpan);
+                }
+            }
+            
+            return cartCount;
+        }
+        
+        // التهيئة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            setupEventListeners();
+            
+            // تحميل بيانات تسجيل الدخول المحفوظة
+            loadRememberedCredentials();
+        });
+        
+        // إعداد المستمعين للأحداث
+        function setupEventListeners() {
+            // التحقق أثناء الكتابة
+            email.addEventListener('input', validateEmail);
+            password.addEventListener('input', validatePassword);
+            
+            // إرسال النموذج
+            form.addEventListener('submit', handleFormSubmit);
+            
+            // التحقق عند فقدان التركيز
+            email.addEventListener('blur', validateEmail);
+            password.addEventListener('blur', validatePassword);
+            
+            // استماع لتغييرات في جميع الحقول للتحقق التلقائي
+            const inputs = form.querySelectorAll('.signup-input');
+            inputs.forEach(input => {
+                input.addEventListener('input', validateForm);
+            });
+        }
+        
+        // تحميل بيانات تسجيل الدخول المحفوظة
+        function loadRememberedCredentials() {
+            const rememberedEmail = localStorage.getItem('rememberedEmail');
+            const rememberedPassword = localStorage.getItem('rememberedPassword');
+            
+            if (rememberedEmail && rememberedPassword) {
+                email.value = rememberedEmail;
+                password.value = rememberedPassword;
+                rememberMe.checked = true;
+                validateForm();
+            }
+        }
+        
+        // التحقق من البريد الإلكتروني
+        function validateEmail() {
+            const value = email.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (value === '') {
+                showError(emailError, 'Email is required');
+                email.classList.add('invalid');
+                email.classList.remove('valid');
+                return false;
+            } else if (!emailRegex.test(value)) {
+                showError(emailError, 'Please enter a valid email address');
+                email.classList.add('invalid');
+                email.classList.remove('valid');
+                return false;
+            } else {
+                hideError(emailError);
+                email.classList.add('valid');
+                email.classList.remove('invalid');
+                return true;
+            }
+        }
+        
+        // التحقق من كلمة المرور
+        function validatePassword() {
+            const value = password.value;
+            
+            if (value === '') {
+                showError(passwordError, 'Password is required');
+                password.classList.add('invalid');
+                password.classList.remove('valid');
+                return false;
+            } else if (value.length < 1) {
+                showError(passwordError, 'Password is required');
+                password.classList.add('invalid');
+                password.classList.remove('valid');
+                return false;
+            } else {
+                hideError(passwordError);
+                password.classList.add('valid');
+                password.classList.remove('invalid');
+                return true;
+            }
+        }
+        
+        // التحقق من النموذج كاملاً
+        function validateForm() {
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+            
+            const isValid = isEmailValid && isPasswordValid;
+            
+            signinButton.disabled = !isValid;
+            
+            return isValid;
+        }
+        
+        // معالجة إرسال النموذج
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // حفظ بيانات تسجيل الدخول إذا تم تحديد "تذكرني"
+                if (rememberMe.checked) {
+                    localStorage.setItem('rememberedEmail', email.value.trim());
+                    localStorage.setItem('rememberedPassword', password.value);
+                } else {
+                    localStorage.removeItem('rememberedEmail');
+                    localStorage.removeItem('rememberedPassword');
+                }
+                
+                // محاكاة تسجيل الدخول
+                successMessage.classList.add('show');
+                signinButton.disabled = true;
+                
+                // حفظ حالة تسجيل الدخول
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email.value.trim());
+                
+                // إعادة التوجيه إلى الصفحة الرئيسية بعد تأخير
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1500);
+            }
+        }
+        
+        // دوال مساعدة للرسائل
+        function showError(element, message) {
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+        
+        function hideError(element) {
+            element.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

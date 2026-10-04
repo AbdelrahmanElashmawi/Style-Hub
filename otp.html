@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="shortcut icon" href="materal/abdelr7man-removebg-preview.png">
+    <title>OTP - Style Hub</title>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #1a1a1a;
+            --text-color: #fff;
+            --text-secondary: #aaa;
+            --card-bg: #2a2a2a;
+            --border-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .otp-digit {
+            width: 45px;
+            height: 55px;
+            text-align: center;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+        }
+        
+        .otp-digit:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .verify-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .resend-text {
+            color: var(--text-secondary);
+        }
+        
+        .resend-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OTP Verification</h1>
+        <p>Enter the 6-digit code sent to your phone</p>
+        
+        <div class="otp-inputs">
+            <input type="text" class="otp-digit" maxlength="1" required>
+            <input type="text" class="otp-digit" maxlength="1" required>
+            <input type="text" class="otp-digit" maxlength="1" required>
+            <input type="text" class="otp-digit" maxlength="1" required>
+            <input type="text" class="otp-digit" maxlength="1" required>
+            <input type="text" class="otp-digit" maxlength="1" required>
+        </div>
+        
+        <button class="verify-btn">Verify OTP</button>
+        
+        <p class="resend-text">
+            Didn't receive code? <a href="#">Resend OTP</a>
+        </p>
+    </div>
+    
+    <script>
+        const digits = document.querySelectorAll('.otp-digit');
+        
+        digits.forEach((digit, index) => {
+            digit.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < 5) {
+                    digits[index + 1].focus();
+                }
+            });
+            
+            digit.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && index > 0 && !e.target.value) {
+                    digits[index - 1].focus();
+                }
+            });
+        });
+        
+        document.querySelector('.verify-btn').addEventListener('click', function() {
+            let otp = '';
+            digits.forEach(digit => otp += digit.value);
+            
+            if (otp.length === 6) {
+                // هنا يتم التحقق من OTP
+                alert('Payment completed successfully!');
+                window.location.href = 'home.html';
+            } else {
+                alert('Please enter complete OTP code');
+            }
+        });
+    </script>
+</body>
+</html>

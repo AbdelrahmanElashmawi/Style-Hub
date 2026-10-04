@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.2s linear;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 2rem 3%;
+    background: transparent;
+    background-color: #1a1a1a;
+}
+
+header.scrolled {
+    background: rgba(26, 26, 26, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 11rem;
+    height: auto;
+    margin-top: 1.1rem;
+    margin-left: 3rem;
+}
+
+.icons-header i {
+    padding-right: 1.5rem;
+    font-weight: bolder;
+    color: #606060;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.icons-header i:hover {
+    color: #fff;
+}
+
+.signup {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.signup-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+}
+
+.signup-form {
+    width: 30%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(145, 145, 145);
+    cursor: pointer;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.signup-form input::placeholder {
+    color: #ccc;
+}
+
+.signup-form button {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    border: 2px solid #3a3a3a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: #000;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.signup-form button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: #3a3a3a;
+    z-index: -1;
+    transition: all 0.5s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(4deg);
+}
+
+.signup-form button:hover::before {
+    width: 0;
+    height: 0;
+}
+
+
+.signup-form p {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.signup-form p a {
+    color: #bebebe;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-form p a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+.footer-cantainer {
+    width: 85%;
+    height: 50%;
+    justify-content: center;
+    margin-top: 6rem;
+    margin-left: 6rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2.3rem;
+    border-bottom: 1px solid #999;
+}
+
+.footer-cantainer h1 {
+    text-align: center;
+    color: #1a1a1a;
+    font-size: 2rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.footer-box {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.footer-box h2 {
+    font-size: 1.5rem;
+    color:#cfcfcf ;
+    text-align: center;
+    font-weight: 600;
+}
+
+.a-footer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.a-footer a {
+    font-size: 1.1rem;
+    color: #969696;
+    text-decoration: none;
+}
+
+.a-footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.footer-icons i {
+    font-size: 1.2rem;
+    margin: 5px 5px;
+    color: #969696;
+    cursor: pointer;
+}
+
+.footer-icons i:hover {
+    color: #fff;
+}
+
+.footer-copy {
+    width: 85%;
+    margin-left: 6rem;
+    margin-top: 1rem;
+    color: #dadada ;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.footer-copy p {
+    margin: 5px 0;
+}
+
+.footer-copy p a {
+    color: #969696;
+}
+
+.footer-copy p a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    margin: 10px 0;
+}
+.footer-links a {
+    color: #969696;
+    text-decoration: none;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.about {
+    color: #969696;
+    text-decoration: none;
+}
+
+.about:hover {
+    color: #fff;
+    text-decoration: underline;
+}
